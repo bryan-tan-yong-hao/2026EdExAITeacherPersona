@@ -7,22 +7,103 @@
     <style>
         :root {
             --primary: #2563eb;
-            --bg: #f3f4f6;
+            --primary-dark: #1e40af;
+            --bg: #f8fafc;
             --card: #ffffff;
-            --text: #1f2937;
+            --text: #0f172a;
+            --text-light: #64748b;
             --accent: #dbeafe;
+            --border: #e2e8f0;
+            --success: #10b981;
         }
-        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; background: var(--bg); color: var(--text); display: flex; justify-content: center; padding: 20px; line-height: 1.6; }
-        #quiz-app { background: var(--card); max-width: 650px; width: 100%; padding: 40px; border-radius: 12px; box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1); margin-bottom: 50px; }
+        
+        body { 
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; 
+            background: var(--bg); 
+            color: var(--text); 
+            display: flex; 
+            justify-content: center; 
+            padding: 40px 20px; 
+            line-height: 1.6;
+            min-height: 100vh;
+            margin: 0;
+        }
+
+        #quiz-app { 
+            background: var(--card); 
+            max-width: 700px; 
+            width: 100%; 
+            padding: 48px; 
+            border-radius: 24px; 
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.05), 0 10px 10px -5px rgba(0, 0, 0, 0.02); 
+            margin-bottom: 50px;
+            border: 1px solid var(--border);
+        }
+
         .hidden { display: none; }
-        h1 { font-size: 2rem; margin-bottom: 10px; color: var(--primary); text-align: center; font-weight: 800; }
-        h2 { text-align: center; color: #4b5563; font-size: 1.2rem; font-weight: 500; margin-top: 0;}
-        h3 { color: var(--primary); border-bottom: 2px solid var(--accent); padding-bottom: 10px; margin-top: 30px; font-size: 1.4rem;}
-        .progress { font-size: 0.9rem; color: #6b7280; margin-bottom: 20px; text-align: center; font-weight: bold; text-transform: uppercase; letter-spacing: 1px; }
-        .question-text { font-size: 1.3rem; font-weight: 600; margin-bottom: 25px; color: #111827; }
-        .options { display: flex; flex-direction: column; gap: 12px; }
-        .option-btn { background: #fff; border: 2px solid #e5e7eb; padding: 18px 20px; border-radius: 10px; cursor: pointer; text-align: left; transition: all 0.2s; font-size: 1rem; color: #374151; }
-        .option-btn:hover { border-color: var(--primary); background: #eff6ff; transform: translateY(-2px); box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1); }
+
+        h1 { font-size: 2.25rem; margin-bottom: 12px; color: var(--text); text-align: center; font-weight: 800; letter-spacing: -0.025em; }
+        
+        .intro-text { text-align: center; font-size: 1.125rem; color: var(--text-light); margin-bottom: 40px; max-width: 500px; margin-left: auto; margin-right: auto; }
+
+        h2 { text-align: center; color: var(--text); font-size: 1.5rem; font-weight: 700; margin-top: 0; margin-bottom: 24px; }
+        
+        /* Specific request: Bold Results Title */
+        .results-header { 
+            font-weight: 900; 
+            text-transform: uppercase; 
+            letter-spacing: 0.05em; 
+            color: var(--primary); 
+            font-size: 1.1rem; 
+            display: block; 
+            text-align: center;
+            margin-bottom: 8px;
+        }
+
+        h3 { color: var(--text); border-bottom: 2px solid var(--accent); padding-bottom: 12px; margin-top: 40px; font-size: 1.25rem; font-weight: 700; }
+
+        .progress { 
+            font-size: 0.75rem; 
+            color: var(--primary); 
+            margin-bottom: 24px; 
+            text-align: center; 
+            font-weight: 800; 
+            text-transform: uppercase; 
+            letter-spacing: 0.1em;
+            background: var(--accent);
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 20px;
+            width: fit-content;
+            margin-left: auto;
+            margin-right: auto;
+            display: block;
+        }
+
+        .question-text { font-size: 1.5rem; font-weight: 700; margin-bottom: 32px; color: var(--text); text-align: center; line-height: 1.3; }
+
+        .options { display: flex; flex-direction: column; gap: 16px; }
+
+        .option-btn { 
+            background: #fff; 
+            border: 2px solid var(--border); 
+            padding: 20px 24px; 
+            border-radius: 16px; 
+            cursor: pointer; 
+            text-align: left; 
+            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1); 
+            font-size: 1.05rem; 
+            color: var(--text); 
+            font-weight: 500;
+        }
+
+        .option-btn:hover { 
+            border-color: var(--primary); 
+            background: #f0f7ff; 
+            transform: scale(1.02);
+            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.1);
+        }
+
         .result-card { text-align: left; animation: fadeIn 0.8s ease-out; }
         
         #persona-visual-container { 
@@ -30,59 +111,106 @@
             display: flex; 
             flex-direction: column;
             justify-content: center; 
-            margin-bottom: 20px; 
-            background: #ffffff; 
-            padding: 10px; 
-            border-radius: 12px;
-            border: 1px solid #e5e7eb;
+            margin-bottom: 32px; 
+            background: #f8fafc; 
+            padding: 16px; 
+            border-radius: 20px;
+            border: 1px solid var(--border);
             overflow: hidden;
-            min-height: 300px;
+            min-height: 350px;
             align-items: center;
             position: relative;
         }
+
         .persona-img { 
             max-width: 100%; 
             height: auto; 
-            max-height: 400px; 
-            border-radius: 8px;
+            max-height: 450px; 
+            border-radius: 12px;
             object-fit: contain;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
             display: none;
-        }
-        .img-status {
-            color: #9ca3af;
-            font-size: 0.9rem;
-            text-align: center;
-            padding: 20px;
-        }
-        .debug-info {
-            font-family: monospace;
-            font-size: 0.75rem;
-            background: #fef2f2;
-            padding: 15px;
-            border: 1px solid #fee2e2;
-            border-radius: 8px;
-            margin-top: 15px;
-            text-align: left;
-            width: 100%;
-            display: none;
-            color: #991b1b;
+            transition: opacity 0.5s ease;
         }
 
-        .persona-title { font-size: 2.5rem; color: var(--primary); margin: 5px 0; text-align: center; font-weight: 900; letter-spacing: -1px; }
-        .superpower { background: #eff6ff; border-left: 5px solid var(--primary); padding: 20px; margin: 25px 0; border-radius: 6px; font-size: 1.1rem; }
-        .superpower strong { color: var(--primary); display: block; text-transform: uppercase; font-size: 0.8rem; letter-spacing: 1px; margin-bottom: 5px; }
-        .use-case-list { margin-left: 20px; padding: 0; }
-        .use-case-list li { margin-bottom: 12px; list-style-type: none; position: relative; padding-left: 25px; }
-        .use-case-list li::before { content: "→"; position: absolute; left: 0; color: var(--primary); font-weight: bold; }
-        .summary-section { margin-top: 60px; border-top: 2px solid #e5e7eb; padding-top: 30px; }
-        .summary-item { margin-bottom: 15px; font-size: 0.95rem; background: #f9fafb; padding: 20px; border-radius: 10px; border: 1px solid #f3f4f6; }
-        .summary-q { font-weight: 700; display: block; margin-bottom: 8px; color: #374151; }
-        .summary-a { color: var(--primary); font-weight: 500; padding-left: 15px; border-left: 3px solid var(--accent); display: block; }
-        button.restart { margin-top: 30px; background: var(--primary); color: white; border: none; padding: 15px 30px; border-radius: 8px; cursor: pointer; font-weight: 700; width: 100%; font-size: 1.1rem; transition: background 0.3s; }
-        button.restart:hover { background: #1d4ed8; }
+        .img-status { color: var(--text-light); font-size: 0.875rem; text-align: center; font-style: italic; }
+
+        .persona-title { 
+            font-size: 3rem; 
+            color: var(--text); 
+            margin: 10px 0; 
+            text-align: center; 
+            font-weight: 900; 
+            letter-spacing: -0.04em; 
+            line-height: 1;
+        }
+
+        .superpower { 
+            background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%); 
+            padding: 24px; 
+            margin: 32px 0; 
+            border-radius: 16px; 
+            font-size: 1.125rem;
+            border: 1px solid var(--accent);
+        }
+
+        .superpower strong { 
+            color: var(--primary); 
+            display: block; 
+            text-transform: uppercase; 
+            font-size: 0.75rem; 
+            letter-spacing: 0.1em; 
+            margin-bottom: 8px; 
+            font-weight: 800;
+        }
+
+        .use-case-list { margin: 20px 0; padding: 0; display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+        .use-case-list li { 
+            margin: 0; 
+            list-style-type: none; 
+            padding: 12px 16px; 
+            background: #f1f5f9;
+            border-radius: 12px;
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: var(--text);
+            display: flex;
+            align-items: center;
+        }
+        .use-case-list li::before { content: "✓"; margin-right: 10px; color: var(--success); font-weight: 900; }
+
+        .summary-section { margin-top: 60px; border-top: 2px solid var(--border); padding-top: 40px; }
+        .summary-item { margin-bottom: 16px; font-size: 0.9rem; background: var(--bg); padding: 20px; border-radius: 16px; border: 1px solid var(--border); }
+        .summary-q { font-weight: 700; display: block; margin-bottom: 8px; color: var(--text); }
+        .summary-a { color: var(--primary); font-weight: 600; }
+
+        button.restart { 
+            margin-top: 32px; 
+            background: var(--primary); 
+            color: white; 
+            border: none; 
+            padding: 18px 32px; 
+            border-radius: 16px; 
+            cursor: pointer; 
+            font-weight: 700; 
+            width: 100%; 
+            font-size: 1.125rem; 
+            transition: all 0.3s;
+            box-shadow: 0 4px 6px -1px rgba(37, 99, 235, 0.2);
+        }
+
+        button.restart:hover { 
+            background: var(--primary-dark); 
+            transform: translateY(-2px);
+            box-shadow: 0 10px 15px -3px rgba(37, 99, 235, 0.3);
+        }
         
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+        @media (max-width: 600px) {
+            #quiz-app { padding: 24px; }
+            .persona-title { font-size: 2.25rem; }
+            .use-case-list { grid-template-columns: 1fr; }
+        }
     </style>
 </head>
 <body>
@@ -90,7 +218,7 @@
 <div id="quiz-app">
     <div id="intro">
         <h1>AI Teacher Persona Quiz</h1>
-        <p style="text-align: center; font-size: 1.1rem; color: #6b7280; margin-bottom: 30px;">Discover how you leverage AI to enhance teaching and learning in your classroom.</p>
+        <p class="intro-text">Discover how you leverage AI to enhance teaching and learning in your classroom.</p>
         <div style="text-align: center;"><button class="restart" onclick="startQuiz()">Begin Journey</button></div>
     </div>
 
@@ -102,23 +230,26 @@
 
     <div id="result" class="hidden">
         <div class="result-card">
-            <h2>AI Teacher Persona Results</h2>
+            <span class="results-header">AI Teacher Persona Results</span>
             <div id="persona-visual-container">
-                <div id="img-loader" class="img-status">Initializing visual...</div>
+                <div id="img-loader" class="img-status">Generating your visual...</div>
                 <img id="persona-img" src="" alt="Persona Visual" class="persona-img">
-                <div id="debug-box" class="debug-info"></div>
             </div>
-            <h2>You are the</h2>
+            <h2 style="margin-bottom: 4px; font-weight: 500; color: var(--text-light);">You are the</h2>
             <div class="persona-title" id="persona-display"></div>
-            <p id="persona-desc" style="font-size: 1.1rem; color: #4b5563; text-align: center; margin-bottom: 30px;"></p>
+            <p id="persona-desc" style="font-size: 1.125rem; color: var(--text-light); text-align: center; margin-bottom: 32px; max-width: 600px; margin-left: auto; margin-right: auto;"></p>
+            
             <div class="superpower">
                 <strong>Your Superpower</strong>
                 <span id="persona-superpower"></span>
             </div>
-            <h3>You typically use AI for...</h3>
+
+            <h3>How you lead with AI</h3>
             <ul class="use-case-list" id="persona-use-cases"></ul>
+            
             <button class="restart" onclick="location.reload()">Take the Quiz Again</button>
         </div>
+
         <div class="summary-section">
             <h3>Your Response Summary</h3>
             <div id="summary-content"></div>
@@ -192,31 +323,31 @@
 
     const personaDetails = {
         "Prompt Whisperer": {
-            image: "The Prompt Whisperer.jpg",
+            image: "the_prompt_whisperer.jpg",
             desc: "You know that good AI output often starts with a good prompt. You use AI as a thinking partner to brainstorm, refine explanations, and sharpen lesson ideas before teaching begins.",
             superpower: "Turning simple prompts into powerful teaching ideas.",
-            useCases: ["Brainstorming lesson directions", "Refining explanations", "Generating strong question stems", "Exploring framing options"]
+            useCases: ["Brainstorming lesson directions", "Refining explanations", "Generating question stems", "Exploring framing options"]
         },
         "Content Alchemist": {
-            image: "The Content Alchemist.jpg",
+            image: "the_content_alchemist.jpg",
             desc: "You turn ideas into engaging and ready-to-use learning materials. You use AI to generate worksheets, examples, and tasks that help bring content to life.",
             superpower: "Transforming ideas into practical, classroom-ready resources.",
             useCases: ["Creating worksheets", "Generating examples", "Adapting materials", "Designing tasks"]
         },
         "Classroom Conductor": {
-            image: "The Classroom Conductor.jpg",
+            image: "the_classroom_conductor.jpg",
             desc: "You bring AI into the learning experience itself. You design opportunities for students to interact with AI, explore ideas, and construct understanding.",
             superpower: "Orchestrating meaningful learning experiences with AI.",
-            useCases: ["Supporting student inquiry", "Designing AI-assisted activities", "Facilitating discussions", "Encouraging reflection"]
+            useCases: ["Supporting student inquiry", "Designing AI activities", "Facilitating discussions", "Encouraging reflection"]
         },
         "Feedback Detective": {
-            image: "The Feedback Detective.jpg",
+            image: "the_feedback_detective.jpg",
             desc: "You use AI to uncover insights about student learning. You look for patterns, identify misconceptions, and use AI to support targeted feedback.",
             superpower: "Turning student responses into actionable learning insights.",
             useCases: ["Analysing student work", "Identifying misconceptions", "Supporting feedback", "Informing instructions"]
         },
         "Lesson Hacker": {
-            image: "The Lesson Hacker.jpg",
+            image: "the_lesson_hacker.jpg",
             desc: "You are constantly refining and improving your teaching. You use AI to reflect on lessons, redesign activities, and explore better ways to support learning.",
             superpower: "Continuously improving teaching through iteration.",
             useCases: ["Reviewing effectiveness", "Improving explanations", "Redesigning activities", "Exploring approaches"]
@@ -268,63 +399,30 @@
 
         const imgElement = document.getElementById('persona-img');
         const imgLoader = document.getElementById('img-loader');
-        const debugBox = document.getElementById('debug-box');
 
         imgElement.style.display = 'none';
         imgLoader.style.display = 'block';
-        imgLoader.innerText = "Finding visual file...";
-        debugBox.style.display = 'none';
 
         const baseName = details.image;
-        
-        // Comprehensive list of URI patterns to try.
-        // Modern browsers sometimes require specific formats for local files with spaces.
-        const variations = [
-            baseName,                               // "The Prompt Whisperer.jpg"
-            encodeURI(baseName),                    // "The%20Prompt%20Whisperer.jpg"
-            "./" + baseName,                        // Explicit current directory
-            "./" + encodeURI(baseName),             // Encoded with directory
-            baseName.replace(/ /g, '_'),             // "The_Prompt_Whisperer.jpg" (in case renamed)
-            baseName.toLowerCase(),                  // lowercase
-            baseName.replace(".jpg", ".jpeg"),       // extension variation
-            "images/" + baseName                     // nested folder check
-        ];
+        const variations = [baseName, "./" + baseName];
 
         let attemptIndex = 0;
-
         function attemptLoad() {
             if (attemptIndex >= variations.length) {
-                imgLoader.innerHTML = `<span style="color:#ef4444; font-weight: bold;">Image Not Found</span>`;
-                debugBox.style.display = 'block';
-                debugBox.innerHTML = `
-                    <strong>TROUBLESHOOTING:</strong><br>
-                    1. Ensure <strong>${baseName}</strong> is in the same folder as this HTML file.<br>
-                    2. Check if the file extension is exactly <strong>.jpg</strong> (not .png or .JPG).<br>
-                    3. Right-click the image and select 'Properties' to verify the exact name.<br>
-                    <hr style="margin: 10px 0; border:0; border-top:1px solid #fee2e2;">
-                    <strong>Failed Attempts:</strong><br>
-                    ${variations.slice(0, attemptIndex).join('<br>')}
-                `;
+                imgLoader.innerHTML = `<span style="color:#ef4444; font-weight: bold;">Image Not Found: ${baseName}</span>`;
                 return;
             }
-
-            const currentSrc = variations[attemptIndex];
-            console.log(`Trying to load: ${currentSrc}`);
-            imgElement.src = currentSrc;
+            imgElement.src = variations[attemptIndex];
             attemptIndex++;
         }
 
         imgElement.onload = () => {
             imgLoader.style.display = 'none';
             imgElement.style.display = 'block';
-            console.log(`Successfully loaded: ${imgElement.src}`);
+            imgElement.style.opacity = '1';
         };
 
-        imgElement.onerror = () => {
-            attemptLoad();
-        };
-
-        // Start the loading sequence
+        imgElement.onerror = attemptLoad;
         attemptLoad();
 
         document.getElementById('persona-display').innerText = winner;
