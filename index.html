@@ -51,9 +51,9 @@
         }
 
         .header-logos img {
-            height: 55px; /* Slightly bigger logos */
+            height: 66px; /* Increased by 20% (was 55px) */
             width: auto;
-            max-width: 180px;
+            max-width: 216px; /* Increased relative to height */
             object-fit: contain;
         }
 
@@ -64,7 +64,7 @@
             padding: 60px 48px; 
             border-radius: 32px; 
             box-shadow: 0 25px 50px -12px rgba(99, 102, 241, 0.1); 
-            margin-top: 100px; 
+            margin-top: 110px; 
             margin-bottom: 50px;
             border: 1px solid var(--border);
             position: relative;
@@ -96,7 +96,7 @@
         }
         
         .event-title-img {
-            max-width: 75%; /* 25% smaller as requested */
+            max-width: 56%; /* Reduced by another 25% (0.75 * 75% ≈ 56%) */
             height: auto;
             margin-bottom: 25px;
             border-radius: 12px;
@@ -141,7 +141,7 @@
         }
         .option-btn:hover { border-color: var(--primary); background: #f5f3ff; transform: translateX(8px); }
 
-        /* RESULTS HEADER - Reduced size further as requested */
+        /* RESULTS HEADER */
         .results-header-text {
             text-align: center;
             text-transform: uppercase;
@@ -150,7 +150,7 @@
             color: var(--primary);
             letter-spacing: 8px;
             margin-bottom: 25px;
-            font-size: 2.5rem; /* Adjusted from 3.375rem to be more balanced */
+            font-size: 2.5rem;
             line-height: 1;
             opacity: 0.9;
         }
@@ -192,7 +192,7 @@
             text-align: center;
         }
 
-        .use-case-list { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; padding: 0; list-style: none; }
+        .use-case-list { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; padding: 0; list-style: none; margin-bottom: 40px; }
         .use-case-list li { 
             background: #f5f3ff; 
             padding: 16px; 
@@ -203,6 +203,12 @@
             align-items: center;
         }
         .use-case-list li::before { content: "✓"; color: var(--success); margin-right: 12px; font-weight: 900; }
+
+        /* Review Summary Styles */
+        .review-section { margin-top: 40px; border-top: 2px solid var(--border); padding-top: 30px; }
+        .review-item { margin-bottom: 20px; text-align: left; background: #fafaff; padding: 15px; border-radius: 12px; border-left: 4px solid var(--primary); }
+        .review-q { font-weight: 700; color: var(--text); font-size: 0.95rem; margin-bottom: 5px; }
+        .review-a { color: var(--text-light); font-size: 0.9rem; font-style: italic; }
 
         button.action-btn { 
             background: var(--primary); 
@@ -278,6 +284,12 @@
 
         <h3 style="border-bottom: 2px solid var(--border); padding-bottom:12px; margin-bottom:24px; text-align: center; font-weight: 800;">Recommended AI Use Cases</h3>
         <ul class="use-case-list" id="persona-use-cases"></ul>
+
+        <!-- Review Section (Summary of selections) -->
+        <div class="review-section">
+            <h3 style="text-align: center; font-weight: 800; margin-bottom: 20px;">Your Selections Review</h3>
+            <div id="review-summary"></div>
+        </div>
         
         <button class="action-btn" style="margin-top:50px;" onclick="location.reload()">Take the Quiz Again</button>
     </div>
@@ -382,6 +394,7 @@
 
     let currentQuestion = 0;
     let scores = {};
+    let userSelections = [];
 
     function startQuiz() {
         document.getElementById('intro').classList.add('hidden');
@@ -399,13 +412,14 @@
             const btn = document.createElement('button');
             btn.className = 'option-btn';
             btn.innerText = opt.text;
-            btn.onclick = () => handleAnswer(opt.persona);
+            btn.onclick = () => handleAnswer(opt.persona, opt.text, q.q);
             optionsDiv.appendChild(btn);
         });
     }
 
-    function handleAnswer(persona) {
+    function handleAnswer(persona, text, question) {
         scores[persona] = (scores[persona] || 0) + 1;
+        userSelections.push({ question, answer: text });
         currentQuestion++;
         if (currentQuestion < quizData.length) {
             showQuestion();
@@ -443,6 +457,19 @@
             const li = document.createElement('li');
             li.innerText = uc;
             useCasesUl.appendChild(li);
+        });
+
+        // Build Review Summary
+        const reviewSummary = document.getElementById('review-summary');
+        reviewSummary.innerHTML = '';
+        userSelections.forEach(item => {
+            const div = document.createElement('div');
+            div.className = 'review-item';
+            div.innerHTML = `
+                <div class="review-q">${item.question}</div>
+                <div class="review-a">You selected: ${item.answer}</div>
+            `;
+            reviewSummary.appendChild(div);
         });
         
         window.scrollTo({ top: 0, behavior: 'smooth' });
