@@ -268,7 +268,7 @@
             <button class="action-btn" style="margin-top:30px;" onclick="location.reload()">Restart Quiz</button>
         </div>
 
-        <div style="margin-top:40px; border-top: 1px solid var(--border); padding-top:20px;">
+        <div style="margin-top:40px; border-top: 2px solid var(--border); padding-top:20px;">
             <h3 style="margin-bottom: 20px;">Detailed Summary of Choices</h3>
             <div id="summary-content"></div>
         </div>
@@ -416,7 +416,8 @@
         const details = personaDetails[winner];
 
         const imgElement = document.getElementById('persona-img');
-        imgElement.src = details.image;
+        // Ensure pathing is relative for GitHub Pages
+        imgElement.src = "./" + details.image;
         imgElement.onload = () => {
             document.getElementById('img-loader').style.display = 'none';
             imgElement.style.display = 'block';
