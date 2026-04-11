@@ -14,7 +14,7 @@
             --primary-dark: #4f46e5;
             /* Pale purple background code: #f5f3ff */
             --bg: #f5f3ff; 
-            --card: #ffffff;
+            --card: #ffffff;A
             --text: #1e1b4b;
             --text-light: #6366f1;
             --accent: #eef2ff;
@@ -51,9 +51,9 @@
         }
 
         .header-logos img {
-            height: 66px; /* Increased by 20% (was 55px) */
+            height: 66px; 
             width: auto;
-            max-width: 216px; /* Increased relative to height */
+            max-width: 216px; 
             object-fit: contain;
         }
 
@@ -74,7 +74,7 @@
 
         h1 { 
             font-family: 'Poppins', sans-serif;
-            font-size: 2.75rem; 
+            font-size: 2.475rem; 
             margin-bottom: 16px; 
             color: var(--text); 
             text-align: center; 
@@ -96,7 +96,7 @@
         }
         
         .event-title-img {
-            max-width: 56%; /* Reduced by another 25% (0.75 * 75% ≈ 56%) */
+            max-width: 62%; 
             height: auto;
             margin-bottom: 25px;
             border-radius: 12px;
@@ -105,7 +105,7 @@
         .event-meta {
             font-weight: 800;
             color: var(--text-light);
-            font-size: 1.5rem;
+            font-size: 1.35rem; 
             letter-spacing: -0.01em;
             line-height: 1.3;
         }
@@ -404,7 +404,7 @@
 
     function showQuestion() {
         const q = quizData[currentQuestion];
-        document.getElementById('progress').innerText = `Consultation Step ${currentQuestion + 1} of ${quizData.length}`;
+        document.getElementById('progress').innerText = `Question ${currentQuestion + 1} of ${quizData.length}`;
         document.getElementById('question').innerText = q.q;
         const optionsDiv = document.getElementById('options');
         optionsDiv.innerHTML = '';
