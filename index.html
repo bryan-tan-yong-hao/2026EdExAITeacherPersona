@@ -51,9 +51,9 @@
         }
 
         .header-logos img {
-            height: 40px;
+            height: 55px; /* Slightly bigger logos */
             width: auto;
-            max-width: 140px;
+            max-width: 180px;
             object-fit: contain;
         }
 
@@ -90,10 +90,13 @@
             padding-top: 40px;
             border-top: 2px solid var(--border);
             text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
         
         .event-title-img {
-            max-width: 100%;
+            max-width: 75%; /* 25% smaller as requested */
             height: auto;
             margin-bottom: 25px;
             border-radius: 12px;
@@ -138,16 +141,16 @@
         }
         .option-btn:hover { border-color: var(--primary); background: #f5f3ff; transform: translateX(8px); }
 
-        /* RESULTS HEADER - ENLARGED */
+        /* RESULTS HEADER - Reduced size further as requested */
         .results-header-text {
             text-align: center;
             text-transform: uppercase;
             font-family: 'Poppins', sans-serif;
             font-weight: 900;
             color: var(--primary);
-            letter-spacing: 10px;
-            margin-bottom: 20px;
-            font-size: 4.5rem; /* Large font size */
+            letter-spacing: 8px;
+            margin-bottom: 25px;
+            font-size: 2.5rem; /* Adjusted from 3.375rem to be more balanced */
             line-height: 1;
             opacity: 0.9;
         }
@@ -159,23 +162,26 @@
             align-items: center; 
             margin: 0 auto 32px auto; 
             background: #fafaff; 
-            padding: 20px; 
+            padding: 24px; 
             border-radius: 24px;
             border: 2px solid var(--border);
             min-height: 380px;
             position: relative;
+            box-sizing: border-box;
+            text-align: center;
         }
 
         .persona-img { 
+            display: none; 
             max-width: 100%; 
             height: auto; 
-            max-height: 420px;
+            max-height: 400px;
             border-radius: 12px; 
-            display: none; 
             object-fit: contain;
+            margin: 0 auto;
         }
 
-        .persona-title { font-size: 3.5rem; text-align: center; font-weight: 900; margin-bottom: 12px; font-family: 'Poppins', sans-serif; color: var(--text); }
+        .persona-title { font-size: 3rem; text-align: center; font-weight: 900; margin-bottom: 12px; font-family: 'Poppins', sans-serif; color: var(--text); line-height: 1.1; }
 
         .superpower { 
             background: linear-gradient(135deg, #f5f3ff 0%, #e0e7ff 100%); 
@@ -215,8 +221,8 @@
 
         @media (max-width: 600px) {
             #quiz-app { padding: 30px 20px; }
-            .results-header-text { font-size: 2.5rem; letter-spacing: 4px; }
-            .persona-title { font-size: 2.5rem; }
+            .results-header-text { font-size: 1.8rem; letter-spacing: 4px; }
+            .persona-title { font-size: 2.2rem; }
             .use-case-list { grid-template-columns: 1fr; }
         }
     </style>
@@ -225,7 +231,7 @@
 
 <div class="header-logos">
     <img src="./ed_ex_logo.png" alt="Logo" onerror="this.style.display='none'">
-    <img src="./etd.png" alt="ETD" onerror="this.style.display='none'">
+    <img src="./etd_new.png" alt="ETD Logo" onerror="this.style.display='none'">
 </div>
 
 <div id="quiz-app">
@@ -237,7 +243,7 @@
         <button class="action-btn" onclick="startQuiz()">Begin the Quiz</button>
 
         <div class="event-info">
-            <img src="./event_title.png" alt="Event Title" class="event-title-img" onerror="this.style.display='none'">
+            <img src="./event_title_new.png" alt="Event Title" class="event-title-img" onerror="this.style.display='none'">
             <div class="event-meta">
                 22 April 2026<br>
                 03:00 PM - 05:30 PM
@@ -257,7 +263,7 @@
         <div class="results-header-text">RESULTS</div>
         
         <div id="persona-visual-container">
-            <div id="img-loader" style="color: var(--primary); font-weight: 700;">Generating your persona...</div>
+            <div id="img-loader" style="color: var(--primary); font-weight: 700;">Finalizing your results...</div>
             <img id="persona-img" src="" alt="Persona Portrait" class="persona-img">
         </div>
 
@@ -305,8 +311,8 @@
                 { text: "I try different prompts to see if AI can come up with a clearer explanation.", persona: "Prompt Whisperer" },
                 { text: "I ask AI to produce a quick practice question or example explainer media for students.", persona: "Content Alchemist" },
                 { text: "I let students ask the AI questions to help them explore the concept further.", persona: "Classroom Conductor" },
-                { text: "I ask AI to help identify the misconception students might have.", persona: "Feedback Detective" },
-                { text: "I later use AI to redesign my lesson to teach this concept again.", persona: "Lesson Hacker" }
+                { text: "I ask AI to help identify the misconception students might have based on their responses.", persona: "Feedback Detective" },
+                { text: "I make a mental note and later use AI to redesign my lesson to teach this concept again.", persona: "Lesson Hacker" }
             ]
         },
         {
@@ -315,8 +321,8 @@
                 { text: "I prompt AI to ask what I can do with my students’ work to give them better feedback.", persona: "Prompt Whisperer" },
                 { text: "I use AI to help generate additional practice questions for students.", persona: "Content Alchemist" },
                 { text: "I design a follow-up activity where students can discuss their answers with AI.", persona: "Classroom Conductor" },
-                { text: "I use AI to help analyse patterns in student responses.", persona: "Feedback Detective" },
-                { text: "I use AI to reflect on the lesson and think about improvements.", persona: "Lesson Hacker" }
+                { text: "I use AI to help analyse patterns in student responses and identify misconceptions.", persona: "Feedback Detective" },
+                { text: "I use AI to reflect on the lesson and think about improvements for the next round.", persona: "Lesson Hacker" }
             ]
         },
         {
@@ -424,7 +430,7 @@
             imgElement.style.display = 'block';
         };
         imgElement.onerror = () => {
-            loader.innerHTML = `<span style="font-size: 2rem;">${winner}</span>`;
+            loader.innerHTML = `<span style="font-size: 1.5rem; font-weight:800; color:var(--primary);">${winner}</span>`;
         };
 
         document.getElementById('persona-display').innerText = winner;
