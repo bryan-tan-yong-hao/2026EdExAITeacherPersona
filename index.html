@@ -142,6 +142,7 @@
             min-height: 350px;
             overflow: hidden;
             box-sizing: border-box;
+            position: relative;
         }
 
         .persona-img { 
@@ -153,6 +154,14 @@
             margin: 0 auto; 
             box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
             object-fit: contain;
+            z-index: 2;
+        }
+
+        #img-loader {
+            position: absolute;
+            z-index: 1;
+            text-align: center;
+            color: var(--primary);
         }
 
         .persona-title { font-size: 3rem; text-align: center; font-weight: 900; margin-bottom: 10px; }
@@ -214,8 +223,8 @@
 <body>
 
 <div class="header-logos">
-    <img src="ed_ex_logo.png" alt="Event Logo" onerror="this.style.opacity='0.3';">
-    <img src="etd.png" alt="ETD Logo" onerror="this.style.opacity='0.3';">
+    <img src="./ed_ex_logo.png" alt="Event Logo" onerror="this.style.opacity='0.3'; console.log('Logo missing: ed_ex_logo.png')">
+    <img src="./etd.png" alt="ETD Logo" onerror="this.style.opacity='0.3'; console.log('Logo missing: etd.png')">
 </div>
 
 <div id="quiz-app">
@@ -228,7 +237,7 @@
 
         <!-- EVENT DETAILS SECTION -->
         <div class="event-info">
-            <img src="event_title.png" alt="Event Title" class="event-title-img" onerror="this.style.opacity='0.3';">
+            <img src="./event_title.png" alt="Event Title" class="event-title-img" onerror="this.style.opacity='0.3'; console.log('Title image missing: event_title.png')">
             <div class="event-meta">
                 15 July 2024<br>
                 09:00 AM - 05:00 PM
@@ -416,16 +425,20 @@
         const details = personaDetails[winner];
 
         const imgElement = document.getElementById('persona-img');
-        // Ensure pathing is relative for GitHub Pages
+        const loader = document.getElementById('img-loader');
+        
+        // Use relative paths specifically for GitHub Pages
         imgElement.src = "./" + details.image;
+        
         imgElement.onload = () => {
-            document.getElementById('img-loader').style.display = 'none';
+            loader.style.display = 'none';
             imgElement.style.display = 'block';
         };
+        
         imgElement.onerror = () => {
-            document.getElementById('img-loader').innerText = winner;
-            document.getElementById('img-loader').style.fontSize = "1.5rem";
-            document.getElementById('img-loader').style.fontWeight = "800";
+            loader.innerHTML = `<strong>${winner}</strong><br><small>(Image file "${details.image}" not found in repository)</small>`;
+            loader.style.fontSize = "1rem";
+            console.error('Image missing in repository:', details.image);
         };
 
         document.getElementById('persona-display').innerText = winner;
