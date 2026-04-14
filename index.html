@@ -33,7 +33,7 @@
             margin: 0;
         }
 
-        /* Fixed Header Logos - Increased by 20% (from 50px to 60px) */
+        /* Fixed Header Logos - Increased by another 20% (60px * 1.2 = 72px) */
         .header-logos {
             position: fixed;
             top: 0;
@@ -50,9 +50,9 @@
         }
 
         .header-logos img {
-            height: 60px; 
+            height: 72px; 
             width: auto;
-            max-width: 180px; 
+            max-width: 220px; 
             object-fit: contain;
         }
 
@@ -63,7 +63,7 @@
             padding: 40px 30px; 
             border-radius: 32px; 
             box-shadow: 0 25px 50px -12px rgba(99, 102, 241, 0.1); 
-            margin-top: 100px; 
+            margin-top: 120px; 
             margin-bottom: 50px;
             border: 1px solid var(--border);
             position: relative;
@@ -94,9 +94,9 @@
             align-items: center;
         }
         
-        /* Event Title - Decreased by 20% (from 80% to 64%) */
+        /* Event Title - Decreased by another 20% (64% * 0.8 = 51.2%) */
         .event-title-img {
-            max-width: 64%; 
+            max-width: 51%; 
             height: auto;
             margin-bottom: 20px;
             border-radius: 12px;
@@ -224,9 +224,9 @@
         button.action-btn:hover { background: var(--primary-dark); transform: translateY(-3px); }
 
         @media (max-width: 600px) {
-            #quiz-app { padding: 25px 15px; margin-top: 80px; }
+            #quiz-app { padding: 25px 15px; margin-top: 100px; }
             .header-logos { padding: 8px 15px; }
-            .header-logos img { height: 48px; } /* Proportional increase for mobile */
+            .header-logos img { height: 58px; } 
             h1 { font-size: 1.8rem; }
             .results-header-text { font-size: 1.5rem; letter-spacing: 3px; }
             .persona-title { font-size: 2rem; }
