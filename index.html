@@ -44,15 +44,15 @@
             align-items: center;
             padding: 10px 20px;
             z-index: 100;
-            background: rgba(245, 243, 255, 0.9);
+            background: rgba(245, 243, 255, 0.95);
             backdrop-filter: blur(10px);
             border-bottom: 1px solid var(--border);
         }
 
         .header-logos img {
-            height: 72px; 
+            height: 60px; 
             width: auto;
-            max-width: 220px; 
+            max-width: 180px; 
             object-fit: contain;
         }
 
@@ -63,7 +63,7 @@
             padding: 40px 30px; 
             border-radius: 32px; 
             box-shadow: 0 25px 50px -12px rgba(99, 102, 241, 0.1); 
-            margin-top: 120px; 
+            margin-top: 100px; 
             margin-bottom: 50px;
             border: 1px solid var(--border);
             position: relative;
@@ -94,7 +94,7 @@
         }
         
         .event-title-img {
-            max-width: 51%; 
+            max-width: 80%; 
             height: auto;
             margin-bottom: 20px;
             border-radius: 12px;
@@ -104,7 +104,6 @@
             font-weight: 800;
             color: var(--text-light);
             font-size: 1.2rem; 
-            letter-spacing: -0.01em;
             line-height: 1.3;
         }
 
@@ -147,7 +146,6 @@
             letter-spacing: 6px;
             margin-bottom: 20px;
             font-size: 2rem;
-            line-height: 1;
         }
 
         #persona-visual-container { 
@@ -161,22 +159,17 @@
             border-radius: 24px;
             border: 2px solid var(--border);
             min-height: 300px;
-            position: relative;
-            box-sizing: border-box;
-            text-align: center;
         }
 
         .persona-img { 
-            display: none; 
             max-width: 100%; 
             height: auto; 
             max-height: 350px;
             border-radius: 12px; 
             object-fit: contain;
-            margin: 0 auto;
         }
 
-        .persona-title { font-size: 2.5rem; text-align: center; font-weight: 900; margin-bottom: 10px; font-family: 'Poppins', sans-serif; color: var(--text); line-height: 1.1; }
+        .persona-title { font-size: 2.5rem; text-align: center; font-weight: 900; margin-bottom: 10px; font-family: 'Poppins', sans-serif; color: var(--text); }
 
         .superpower { 
             background: linear-gradient(135deg, #f5f3ff 0%, #e0e7ff 100%); 
@@ -199,11 +192,6 @@
         }
         .use-case-list li::before { content: "✓"; color: var(--success); margin-right: 10px; font-weight: 900; }
 
-        .review-section { margin-top: 30px; border-top: 2px solid var(--border); padding-top: 25px; }
-        .review-item { margin-bottom: 15px; text-align: left; background: #fafaff; padding: 12px; border-radius: 12px; border-left: 4px solid var(--primary); }
-        .review-q { font-weight: 700; color: var(--text); font-size: 0.9rem; margin-bottom: 4px; }
-        .review-a { color: var(--text-light); font-size: 0.85rem; font-style: italic; }
-
         button.action-btn { 
             background: var(--primary); 
             color: white; 
@@ -214,18 +202,12 @@
             font-weight: 800; 
             width: 100%; 
             font-size: 1.2rem;
-            transition: all 0.3s ease;
             box-shadow: 0 10px 15px -3px rgba(99, 102, 241, 0.3);
         }
-        button.action-btn:hover { background: var(--primary-dark); transform: translateY(-3px); }
 
         @media (max-width: 600px) {
-            #quiz-app { padding: 25px 15px; margin-top: 100px; }
-            .header-logos { padding: 8px 15px; }
-            .header-logos img { height: 58px; } 
-            h1 { font-size: 1.8rem; }
-            .results-header-text { font-size: 1.5rem; letter-spacing: 3px; }
-            .persona-title { font-size: 2rem; }
+            #quiz-app { margin-top: 80px; padding: 20px; }
+            .header-logos img { height: 45px; }
             .use-case-list { grid-template-columns: 1fr; }
         }
     </style>
@@ -233,25 +215,19 @@
 <body>
 
 <div class="header-logos">
-    <!-- Updated for GitHub: Relative paths + robust fallbacks -->
-    <img src="ed_ex_logo.png" alt="EdEx Logo" onerror="this.onerror=null; this.src='https://via.placeholder.com/200x80?text=EdEx+Logo';">
-    <img src="etd.png" alt="ETD Logo" onerror="this.onerror=null; this.src='https://via.placeholder.com/200x80?text=ETD+Logo';">
+    <img src="ed_ex_logo.png" alt="EdEx Logo" onerror="this.src='https://via.placeholder.com/150x60?text=EdEx'">
+    <img src="etd.png" alt="ETD Logo" onerror="this.src='https://via.placeholder.com/150x60?text=ETD'">
 </div>
 
 <div id="quiz-app">
     <!-- Landing Page -->
     <div id="intro">
         <h1>AI Teacher Persona Quiz</h1>
-        <p class="intro-text">Identify your unique approach to integrating AI in education.</p>
-        
-        <button class="action-btn" onclick="startQuiz()">Begin the Quiz</button>
-
+        <p class="intro-text">Discover your AI teaching profile for 2026.</p>
+        <button class="action-btn" onclick="startQuiz()">Start Quiz</button>
         <div class="event-info">
-            <img src="event_title.png" alt="Event Title" class="event-title-img" onerror="this.onerror=null; this.src='https://via.placeholder.com/400x150?text=AI+Teacher+Event+2026';">
-            <div class="event-meta">
-                22 April 2026<br>
-                03:00 PM - 05:30 PM
-            </div>
+            <img src="event_title.png" alt="Event Title" class="event-title-img" onerror="this.style.display='none'">
+            <div class="event-meta">April 22, 2026 | 3:00 PM</div>
         </div>
     </div>
 
@@ -264,32 +240,15 @@
 
     <!-- Results Page -->
     <div id="result" class="hidden">
-        <div class="results-header-text">RESULTS</div>
-        
+        <div class="results-header-text">YOUR PERSONA</div>
         <div id="persona-visual-container">
-            <div id="img-loader" style="color: var(--primary); font-weight: 700;">Finalizing your results...</div>
-            <img id="persona-img" src="" alt="Persona Portrait" class="persona-img">
+            <img id="persona-img" src="" alt="Persona" class="persona-img">
         </div>
-
-        <h2 style="text-align:center; margin:0; font-weight:500; color: var(--text-light); letter-spacing: 1px;">You are the</h2>
         <div class="persona-title" id="persona-display"></div>
-        <p id="persona-desc" style="text-align:center; color: var(--text); margin-bottom:25px; font-size: 1.1rem; max-width: 600px; margin-left: auto; margin-right: auto;"></p>
-        
-        <div class="superpower">
-            <strong style="display:block; font-size:0.85rem; text-transform:uppercase; color:var(--primary); margin-bottom:8px; letter-spacing: 2px;">Core Superpower</strong>
-            <span id="persona-superpower" style="font-size: 1.3rem; font-weight: 800; color: var(--text);"></span>
-        </div>
-
-        <h3 style="border-bottom: 2px solid var(--border); padding-bottom:10px; margin-bottom:20px; text-align: center; font-weight: 800;">Typically use AI for...</h3>
+        <p id="persona-desc" style="text-align:center;"></p>
+        <div class="superpower"><span id="persona-superpower" style="font-weight:800;"></span></div>
         <ul class="use-case-list" id="persona-use-cases"></ul>
-
-        <!-- Review Section -->
-        <div class="review-section">
-            <h3 style="text-align: center; font-weight: 800; margin-bottom: 15px;">Your Selections Review</h3>
-            <div id="review-summary"></div>
-        </div>
-        
-        <button class="action-btn" style="margin-top:40px;" onclick="location.reload()">Take the Quiz Again</button>
+        <button class="action-btn" onclick="location.reload()">Restart</button>
     </div>
 </div>
 
@@ -360,39 +319,38 @@
     const personaDetails = {
         "Prompt Whisperer": {
             image: "the_prompt_whisperer.jpg",
-            desc: "You know that good AI output often starts with a good prompt. You use AI as a thinking partner to brainstorm, refine explanations, and sharpen lesson ideas before teaching begins.",
-            superpower: "Turning simple prompts into powerful teaching ideas.",
-            useCases: ["Brainstorming lesson directions", "Refining explanations and examples", "Generating strong question stems", "Exploring multiple ways to frame a concept"]
+            desc: "You know that good AI output often starts with a good prompt. You use AI as a thinking partner to brainstorm and refine ideas.",
+            superpower: "Precision Prompter",
+            useCases: ["Brainstorming ideas", "Refining explanations", "Drafting prompts"]
         },
         "Content Alchemist": {
             image: "the_content_alchemist.jpg",
-            desc: "You turn ideas into engaging and ready-to-use learning materials. You use AI to generate drafts of worksheets, examples, and tasks that you further refine to bring content to life and make learning more accessible for your students.",
-            superpower: "Transforming ideas into practical, classroom-ready resources.",
-            useCases: ["Creating worksheets and practice questions", "Generating examples and case studies", "Adapting materials for different student needs", "Designing engaging learning tasks"]
+            desc: "You turn ideas into ready-to-use materials. You use AI to generate drafts of worksheets and engaging tasks.",
+            superpower: "Resource Generator",
+            useCases: ["Creating worksheets", "Generating examples", "Adapting materials"]
         },
         "Classroom Conductor": {
             image: "the_classroom_conductor.jpg",
-            desc: "You bring AI intentionally into the learning experience itself. You design opportunities for students to interact with AI responsibly, such as exploring ideas and constructing understanding, making learning more active and student-centric.",
-            superpower: "Orchestrating meaningful learning experiences with AI.",
-            useCases: ["Supporting student inquiry and exploration", "Designing AI-assisted classroom activities", "Facilitating discussions and idea generation", "Encouraging reflection and deeper thinking"]
+            desc: "You bring AI into the learning experience itself. You design opportunities for students to interact with AI responsibly.",
+            superpower: "Activity Architect",
+            useCases: ["Student inquiry", "AI-assisted activities", "Idea generation"]
         },
         "Feedback Detective": {
             image: "the_feedback_detective.jpg",
-            desc: "You use AI to uncover insights about student learning. You leverage learning data and AI’s affordances to look for patterns, identify misconceptions, and support targeted feedback that helps students improve.",
-            superpower: "Turning student responses into actionable learning insights.",
-            useCases: ["Analysing student work and responses", "Identifying misconceptions and learning gaps", "Supporting feedback generation", "Informing next instructional steps"]
+            desc: "You use AI to uncover insights about student learning. You leverage AI to look for patterns and identify gaps.",
+            superpower: "Insight Analyst",
+            useCases: ["Analysing work", "Identifying gaps", "Feedback support"]
         },
         "Lesson Hacker": {
             image: "the_lesson_hacker.jpg",
-            desc: "You are constantly refining and reflecting on your teaching practice. You use AI to reflect on lessons, review your lesson materials, and redesign activities to explore better ways to support student learning.",
-            superpower: "Continuously improving teaching through iteration and reflection.",
-            useCases: ["Reviewing lesson effectiveness", "Improving explanations and lesson flow", "Redesigning activities for better engagement", "Exploring alternative teaching approaches"]
+            desc: "You are constantly refining your teaching practice. You use AI to reflect on lessons and iterate on designs.",
+            superpower: "Iterative Designer",
+            useCases: ["Lesson reflection", "Design improvement", "Strategy review"]
         }
     };
 
     let currentQuestion = 0;
     let scores = {};
-    let userSelections = [];
 
     function startQuiz() {
         document.getElementById('intro').classList.add('hidden');
@@ -402,88 +360,44 @@
 
     function showQuestion() {
         const q = quizData[currentQuestion];
-        if (!q) return;
-        
-        document.getElementById('progress').innerText = `Question ${currentQuestion + 1} of ${quizData.length}`;
+        document.getElementById('progress').innerText = `Question ${currentQuestion + 1} of 6`;
         document.getElementById('question').innerText = q.q;
-        const optionsDiv = document.getElementById('options');
-        optionsDiv.innerHTML = '';
-        
+        const opts = document.getElementById('options');
+        opts.innerHTML = '';
         q.options.forEach(opt => {
-            const btn = document.createElement('button');
-            btn.className = 'option-btn';
-            btn.innerText = opt.text;
-            btn.onclick = () => handleAnswer(opt.persona, opt.text, q.q);
-            optionsDiv.appendChild(btn);
+            const b = document.createElement('button');
+            b.className = 'option-btn';
+            b.innerText = opt.text;
+            b.onclick = () => {
+                scores[opt.persona] = (scores[opt.persona] || 0) + 1;
+                currentQuestion++;
+                if (currentQuestion < quizData.length) showQuestion();
+                else showResult();
+            };
+            opts.appendChild(b);
         });
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
-
-    function handleAnswer(persona, text, question) {
-        scores[persona] = (scores[persona] || 0) + 1;
-        userSelections.push({ question, answer: text });
-        currentQuestion++;
-        if (currentQuestion < quizData.length) {
-            showQuestion();
-        } else {
-            showResult();
-        }
     }
 
     function showResult() {
         document.getElementById('quiz').classList.add('hidden');
         document.getElementById('result').classList.remove('hidden');
-        
         const winner = Object.keys(scores).reduce((a, b) => scores[a] > scores[b] ? a : b);
-        const details = personaDetails[winner];
-
-        const imgElement = document.getElementById('persona-img');
-        const loader = document.getElementById('img-loader');
+        const d = personaDetails[winner];
         
-        imgElement.style.display = 'none';
-        loader.style.display = 'block';
-
-        // GitHub Fix: Ensure relative path
-        imgElement.src = details.image;
+        const img = document.getElementById('persona-img');
+        img.src = d.image;
+        img.onerror = () => img.src = `https://via.placeholder.com/400x300/6366f1/ffffff?text=${winner}`;
         
-        imgElement.onload = () => {
-            loader.style.display = 'none';
-            imgElement.style.display = 'block';
-        };
-        
-        imgElement.onerror = () => {
-            // High quality fallback if file is missing in GitHub repo
-            loader.style.display = 'none';
-            const fallbackUrl = `https://via.placeholder.com/400x350/6366f1/ffffff?text=${winner.replace(' ', '+')}`;
-            imgElement.src = fallbackUrl;
-            imgElement.style.display = 'block';
-        };
-
         document.getElementById('persona-display').innerText = winner;
-        document.getElementById('persona-desc').innerText = details.desc;
-        document.getElementById('persona-superpower').innerText = details.superpower;
-
-        const useCasesUl = document.getElementById('persona-use-cases');
-        useCasesUl.innerHTML = '';
-        details.useCases.forEach(uc => {
+        document.getElementById('persona-desc').innerText = d.desc;
+        document.getElementById('persona-superpower').innerText = d.superpower;
+        const uc = document.getElementById('persona-use-cases');
+        uc.innerHTML = '';
+        d.useCases.forEach(text => {
             const li = document.createElement('li');
-            li.innerText = uc;
-            useCasesUl.appendChild(li);
+            li.innerText = text;
+            uc.appendChild(li);
         });
-
-        const reviewSummary = document.getElementById('review-summary');
-        reviewSummary.innerHTML = '';
-        userSelections.forEach(item => {
-            const div = document.createElement('div');
-            div.className = 'review-item';
-            div.innerHTML = `
-                <div class="review-q">${item.question}</div>
-                <div class="review-a">You selected: ${item.answer}</div>
-            `;
-            reviewSummary.appendChild(div);
-        });
-        
-        window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 </script>
 </body>
