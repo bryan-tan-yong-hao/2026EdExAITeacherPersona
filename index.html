@@ -88,9 +88,17 @@
             background: var(--accent);
             border-radius: 16px;
             border: 1px dashed var(--primary);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
         }
-        .intro-event-title { font-weight: 800; color: var(--text); font-size: 1rem; display: block; }
-        .intro-event-date { font-weight: 500; color: var(--primary); font-size: 0.9rem; margin-top: 4px; display: block; }
+        .intro-event-title-img {
+            max-width: 80%;
+            height: auto;
+            margin-bottom: 5px;
+        }
+        .intro-event-date { font-weight: 600; color: var(--primary); font-size: 1rem; display: block; }
 
         .progress { 
             font-size: 0.8rem; 
@@ -233,8 +241,8 @@
         <p class="intro-text">Discover your unique profile for integrating AI into your teaching practices.</p>
         
         <div class="intro-event-info">
-            <span class="intro-event-title">EdEx 2024: AI in Education Symposium</span>
-            <span class="intro-event-date">Thursday, 24 October 2024 | 9:00 AM – 4:00 PM</span>
+            <img src="event_title.png" alt="Event Title" class="intro-event-title-img" onerror="this.src='https://via.placeholder.com/400x80?text=AI+in+Education+Symposium'">
+            <span class="intro-event-date">Wednesday, 22 April 2026 | 3:00 PM – 5:30 PM</span>
         </div>
 
         <button class="action-btn" onclick="startQuiz()">Start Analysis</button>
