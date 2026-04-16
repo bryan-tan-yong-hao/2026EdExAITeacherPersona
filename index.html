@@ -79,7 +79,18 @@
             line-height: 1.1;
         }
         
-        .intro-text { text-align: center; font-size: 1.1rem; color: #4338ca; margin-bottom: 30px; font-weight: 500; }
+        .intro-text { text-align: center; font-size: 1.1rem; color: #4338ca; margin-bottom: 20px; font-weight: 500; }
+
+        .intro-event-info {
+            text-align: center;
+            margin-bottom: 30px;
+            padding: 15px;
+            background: var(--accent);
+            border-radius: 16px;
+            border: 1px dashed var(--primary);
+        }
+        .intro-event-title { font-weight: 800; color: var(--text); font-size: 1rem; display: block; }
+        .intro-event-date { font-weight: 500; color: var(--primary); font-size: 0.9rem; margin-top: 4px; display: block; }
 
         .progress { 
             font-size: 0.8rem; 
@@ -177,16 +188,12 @@
             padding-top: 30px;
             border-top: 2px solid var(--border);
         }
-        .event-info {
+        .completion-info {
             text-align: center;
             margin-bottom: 25px;
-            padding: 15px;
-            background: var(--accent);
-            border-radius: 16px;
-            border: 1px dashed var(--primary);
+            font-size: 0.85rem;
+            color: var(--text-light);
         }
-        .event-title { font-weight: 800; color: var(--text); font-size: 1.1rem; display: block; }
-        .event-time { font-weight: 500; color: var(--primary); font-size: 0.9rem; margin-top: 4px; display: block; }
 
         .review-title { font-size: 1.2rem; font-weight: 800; color: var(--text); margin-bottom: 20px; text-align: center; }
         .review-item { margin-bottom: 20px; font-size: 0.9rem; }
@@ -224,6 +231,12 @@
     <div id="intro">
         <h1>AI Teacher Persona Quiz</h1>
         <p class="intro-text">Discover your unique profile for integrating AI into your teaching practices.</p>
+        
+        <div class="intro-event-info">
+            <span class="intro-event-title">EdEx 2024: AI in Education Symposium</span>
+            <span class="intro-event-date">Thursday, 24 October 2024 | 9:00 AM – 4:00 PM</span>
+        </div>
+
         <button class="action-btn" onclick="startQuiz()">Start Analysis</button>
     </div>
 
@@ -249,10 +262,7 @@
         <ul class="use-case-list" id="persona-use-cases"></ul>
 
         <div class="review-section" id="review-container">
-            <div class="event-info">
-                <span class="event-title">EdEx 2024: AI in Education Symposium</span>
-                <span class="event-time" id="completion-time"></span>
-            </div>
+            <div class="completion-info" id="completion-time"></div>
             <div class="review-title">Review Your Insights</div>
             <div id="answers-summary"></div>
         </div>
@@ -412,12 +422,12 @@
             uc.appendChild(li);
         });
 
-        // Set Completion Time
+        // Set Completion Time for Record
         const now = new Date();
         const dateOptions = { year: 'numeric', month: 'long', day: 'numeric' };
         const timeOptions = { hour: '2-digit', minute: '2-digit' };
         document.getElementById('completion-time').innerText = 
-            `Completed on: ${now.toLocaleDateString(undefined, dateOptions)} at ${now.toLocaleTimeString(undefined, timeOptions)}`;
+            `Analysis completed on ${now.toLocaleDateString(undefined, dateOptions)} at ${now.toLocaleTimeString(undefined, timeOptions)}`;
 
         // Populate Review Section
         const summary = document.getElementById('answers-summary');
