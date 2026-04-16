@@ -135,7 +135,7 @@
             border-radius: 24px;
             border: 2px solid var(--border);
             min-height: 250px;
-            box-sizing: border-box; /* Ensures padding doesn't push width */
+            box-sizing: border-box;
         }
 
         .persona-img { 
@@ -177,6 +177,17 @@
             padding-top: 30px;
             border-top: 2px solid var(--border);
         }
+        .event-info {
+            text-align: center;
+            margin-bottom: 25px;
+            padding: 15px;
+            background: var(--accent);
+            border-radius: 16px;
+            border: 1px dashed var(--primary);
+        }
+        .event-title { font-weight: 800; color: var(--text); font-size: 1.1rem; display: block; }
+        .event-time { font-weight: 500; color: var(--primary); font-size: 0.9rem; margin-top: 4px; display: block; }
+
         .review-title { font-size: 1.2rem; font-weight: 800; color: var(--text); margin-bottom: 20px; text-align: center; }
         .review-item { margin-bottom: 20px; font-size: 0.9rem; }
         .review-q { font-weight: 700; color: var(--text-light); margin-bottom: 4px; }
@@ -238,6 +249,10 @@
         <ul class="use-case-list" id="persona-use-cases"></ul>
 
         <div class="review-section" id="review-container">
+            <div class="event-info">
+                <span class="event-title">EdEx 2024: AI in Education Symposium</span>
+                <span class="event-time" id="completion-time"></span>
+            </div>
             <div class="review-title">Review Your Insights</div>
             <div id="answers-summary"></div>
         </div>
@@ -396,6 +411,13 @@
             li.innerText = text;
             uc.appendChild(li);
         });
+
+        // Set Completion Time
+        const now = new Date();
+        const dateOptions = { year: 'numeric', month: 'long', day: 'numeric' };
+        const timeOptions = { hour: '2-digit', minute: '2-digit' };
+        document.getElementById('completion-time').innerText = 
+            `Completed on: ${now.toLocaleDateString(undefined, dateOptions)} at ${now.toLocaleTimeString(undefined, timeOptions)}`;
 
         // Populate Review Section
         const summary = document.getElementById('answers-summary');
