@@ -71,34 +71,34 @@
 
         h1 { 
             font-family: 'Poppins', sans-serif;
-            font-size: 2.2rem; 
-            margin-bottom: 16px; 
+            font-size: 1.54rem; /* Reduced by 30% from 2.2rem */
+            margin-bottom: 12px; 
             color: var(--text); 
             text-align: center; 
             font-weight: 900; 
             line-height: 1.1;
         }
         
-        .intro-text { text-align: center; font-size: 1.1rem; color: #4338ca; margin-bottom: 20px; font-weight: 500; }
+        .intro-text { text-align: center; font-size: 0.9rem; color: #4338ca; margin-bottom: 15px; font-weight: 500; }
 
         .intro-event-info {
             text-align: center;
-            margin-bottom: 30px;
-            padding: 15px;
+            margin-bottom: 25px;
+            padding: 12px;
             background: var(--accent);
             border-radius: 16px;
             border: 1px dashed var(--primary);
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 10px;
+            gap: 8px;
         }
         .intro-event-title-img {
-            max-width: 80%;
+            max-width: 56%; /* Reduced by 30% from 80% */
             height: auto;
             margin-bottom: 5px;
         }
-        .intro-event-date { font-weight: 600; color: var(--primary); font-size: 1rem; display: block; }
+        .intro-event-date { font-weight: 600; color: var(--primary); font-size: 0.7rem; display: block; } /* Smaller font size */
 
         .progress { 
             font-size: 0.8rem; 
@@ -315,7 +315,7 @@
             q: "After students submit their work, how do you use AI to support post-lesson learning?",
             options: [
                 { text: "I refine AI-generated feedback (by constantly refining my prompts) and check that my students can understand and act on the feedback.", persona: "Prompt Whisperer" },
-                { text: "I use ACP or other AI lesson planning tools to help generate additional lesson materials to address my students’ needs.", persona: "Content Alchemist" },
+                { text: "I use ACP or other AI lesson planning tools to help generate additional lesson planning resources to address my students’ needs.", persona: "Content Alchemist" },
                 { text: "I use AI to help me explore different lesson modalities that can address my students’ learning needs.", persona: "Classroom Conductor" },
                 { text: "I use AI to analyse patterns in student responses and identify misconceptions.", persona: "Feedback Detective" },
                 { text: "I use AI to reflect on my lesson enactment and consider how my lesson can be improved for my other classes at the same level.", persona: "Lesson Hacker" }
