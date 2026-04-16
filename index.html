@@ -223,8 +223,8 @@
     <!-- Landing Page -->
     <div id="intro">
         <h1>AI Teacher Persona Quiz</h1>
-        <p class="intro-text">Discover your AI teaching profile for 2026.</p>
-        <button class="action-btn" onclick="startQuiz()">Start Quiz</button>
+        <p class="intro-text">Discover your unique profile for integrating AI into the 2026 classroom.</p>
+        <button class="action-btn" onclick="startQuiz()">Start Analysis</button>
         <div class="event-info">
             <img src="event_title.png" alt="Event Title" class="event-title-img" onerror="this.style.display='none'">
             <div class="event-meta">April 22, 2026 | 3:00 PM</div>
@@ -233,7 +233,7 @@
 
     <!-- Quiz Flow -->
     <div id="quiz" class="hidden">
-        <div class="progress" id="progress">Question 1 of 6</div>
+        <div class="progress" id="progress">Consultation 1 of 6</div>
         <div class="question-text" id="question"></div>
         <div class="options" id="options"></div>
     </div>
@@ -245,10 +245,14 @@
             <img id="persona-img" src="" alt="Persona" class="persona-img">
         </div>
         <div class="persona-title" id="persona-display"></div>
-        <p id="persona-desc" style="text-align:center;"></p>
-        <div class="superpower"><span id="persona-superpower" style="font-weight:800;"></span></div>
+        <p id="persona-desc" style="text-align:center; padding: 0 20px; font-size: 1.1rem; color: var(--text);"></p>
+        <div class="superpower">
+            <div style="font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px; color: var(--primary); font-weight: 800; margin-bottom: 5px;">Strategic Superpower</div>
+            <span id="persona-superpower" style="font-weight:800; font-size: 1.3rem;"></span>
+        </div>
+        <div style="font-size: 0.9rem; font-weight: 700; margin-bottom: 15px; color: var(--text-light); text-align: center;">HIGH-IMPACT USE CASES</div>
         <ul class="use-case-list" id="persona-use-cases"></ul>
-        <button class="action-btn" onclick="location.reload()">Restart</button>
+        <button class="action-btn" onclick="location.reload()">Restart Quiz</button>
     </div>
 </div>
 
@@ -280,8 +284,8 @@
                 { text: "I try different prompts to see if AI can come up with a clearer explanation.", persona: "Prompt Whisperer" },
                 { text: "I ask AI to produce a quick practice question or example explainer media for students.", persona: "Content Alchemist" },
                 { text: "I let students ask the AI questions to help them explore the concept further.", persona: "Classroom Conductor" },
-                { text: "I ask AI to help identify the misconception students might have.", persona: "Feedback Detective" },
-                { text: "I later use AI to redesign my lesson to teach this concept again.", persona: "Lesson Hacker" }
+                { text: "I ask AI to help identify the misconception students might have based on their responses.", persona: "Feedback Detective" },
+                { text: "I make a mental note and later use AI to redesign my lesson to teach this concept again.", persona: "Lesson Hacker" }
             ]
         },
         {
@@ -290,8 +294,8 @@
                 { text: "I prompt AI to ask what I can do with my students’ work to give them better feedback.", persona: "Prompt Whisperer" },
                 { text: "I use AI to help generate additional practice questions for students.", persona: "Content Alchemist" },
                 { text: "I design a follow-up activity where students can discuss their answers with AI.", persona: "Classroom Conductor" },
-                { text: "I use AI to help analyse patterns in student responses.", persona: "Feedback Detective" },
-                { text: "I use AI to reflect on the lesson and think about improvements.", persona: "Lesson Hacker" }
+                { text: "I use AI to help analyse patterns in student responses and identify misconceptions.", persona: "Feedback Detective" },
+                { text: "I use AI to reflect on the lesson and think about improvements for the next round.", persona: "Lesson Hacker" }
             ]
         },
         {
@@ -319,33 +323,33 @@
     const personaDetails = {
         "Prompt Whisperer": {
             image: "the_prompt_whisperer.jpg",
-            desc: "You know that good AI output often starts with a good prompt. You use AI as a thinking partner to brainstorm and refine ideas.",
+            desc: "You excel at structured communication with AI. You view large language models as collaborative thinking partners, focusing on the precision of input to maximize pedagogical value.",
             superpower: "Precision Prompter",
-            useCases: ["Brainstorming ideas", "Refining explanations", "Drafting prompts"]
+            useCases: ["Refining explanations", "Brainstorming prompts", "Ideation synthesis"]
         },
         "Content Alchemist": {
             image: "the_content_alchemist.jpg",
-            desc: "You turn ideas into ready-to-use materials. You use AI to generate drafts of worksheets and engaging tasks.",
+            desc: "You prioritize efficiency and scalability. You utilize AI as a production powerhouse, converting core curriculum objectives into rich, diversified learning media.",
             superpower: "Resource Generator",
-            useCases: ["Creating worksheets", "Generating examples", "Adapting materials"]
+            useCases: ["Worksheet generation", "Multimedia drafting", "Level-adjustment"]
         },
         "Classroom Conductor": {
             image: "the_classroom_conductor.jpg",
-            desc: "You bring AI into the learning experience itself. You design opportunities for students to interact with AI responsibly.",
+            desc: "You place the student-AI interface at the center. Your strategy focuses on empowering students to navigate AI tools independently for self-directed inquiry.",
             superpower: "Activity Architect",
-            useCases: ["Student inquiry", "AI-assisted activities", "Idea generation"]
+            useCases: ["Socratic AI dialogue", "Independent research", "AI literacy"]
         },
         "Feedback Detective": {
             image: "the_feedback_detective.jpg",
-            desc: "You use AI to uncover insights about student learning. You leverage AI to look for patterns and identify gaps.",
+            desc: "You use AI as an analytical lens. By identifying patterns in student errors and successes, you transform qualitative work into actionable quantitative insights.",
             superpower: "Insight Analyst",
-            useCases: ["Analysing work", "Identifying gaps", "Feedback support"]
+            useCases: ["Trend mapping", "Misconception analysis", "Feedback at scale"]
         },
         "Lesson Hacker": {
             image: "the_lesson_hacker.jpg",
-            desc: "You are constantly refining your teaching practice. You use AI to reflect on lessons and iterate on designs.",
+            desc: "You are a practitioner of continuous iteration. You treat every lesson as a beta test, using AI to audit your own pedagogical choices and refine them.",
             superpower: "Iterative Designer",
-            useCases: ["Lesson reflection", "Design improvement", "Strategy review"]
+            useCases: ["Strategy auditing", "Lesson redesign", "Self-reflexive growth"]
         }
     };
 
@@ -360,7 +364,7 @@
 
     function showQuestion() {
         const q = quizData[currentQuestion];
-        document.getElementById('progress').innerText = `Question ${currentQuestion + 1} of 6`;
+        document.getElementById('progress').innerText = `Consultation ${currentQuestion + 1} of 6`;
         document.getElementById('question').innerText = q.q;
         const opts = document.getElementById('options');
         opts.innerHTML = '';
@@ -381,6 +385,8 @@
     function showResult() {
         document.getElementById('quiz').classList.add('hidden');
         document.getElementById('result').classList.remove('hidden');
+        
+        // Find the persona with the highest score
         const winner = Object.keys(scores).reduce((a, b) => scores[a] > scores[b] ? a : b);
         const d = personaDetails[winner];
         
@@ -391,6 +397,7 @@
         document.getElementById('persona-display').innerText = winner;
         document.getElementById('persona-desc').innerText = d.desc;
         document.getElementById('persona-superpower').innerText = d.superpower;
+        
         const uc = document.getElementById('persona-use-cases');
         uc.innerHTML = '';
         d.useCases.forEach(text => {
@@ -398,6 +405,9 @@
             li.innerText = text;
             uc.appendChild(li);
         });
+
+        // Ensure we scroll to the top to see the result
+        window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 </script>
 </body>
