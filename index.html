@@ -233,8 +233,9 @@
 <body>
 
 <div class="header-logos">
-    <img src="ed_ex_logo.png" alt="EdEx Logo" onerror="handleLogoError(this, 'EdEx')">
-    <img src="etd_new.png" alt="ETD Logo" onerror="handleLogoError(this, 'ETD')">
+    <!-- Updated for GitHub: Relative paths + robust fallbacks -->
+    <img src="ed_ex_logo.png" alt="EdEx Logo" onerror="this.onerror=null; this.src='https://via.placeholder.com/200x80?text=EdEx+Logo';">
+    <img src="etd.png" alt="ETD Logo" onerror="this.onerror=null; this.src='https://via.placeholder.com/200x80?text=ETD+Logo';">
 </div>
 
 <div id="quiz-app">
@@ -246,7 +247,7 @@
         <button class="action-btn" onclick="startQuiz()">Begin the Quiz</button>
 
         <div class="event-info">
-            <img src="event_title_new.png" alt="Event Title" class="event-title-img" onerror="this.parentElement.style.display='block'; this.style.display='none';">
+            <img src="event_title.png" alt="Event Title" class="event-title-img" onerror="this.onerror=null; this.src='https://via.placeholder.com/400x150?text=AI+Teacher+Event+2026';">
             <div class="event-meta">
                 22 April 2026<br>
                 03:00 PM - 05:30 PM
@@ -293,74 +294,65 @@
 </div>
 
 <script>
-    function handleLogoError(img, text) {
-        const span = document.createElement('span');
-        span.style.fontWeight = '800';
-        span.style.color = 'var(--primary)';
-        span.style.fontSize = '1.2rem';
-        span.innerText = text;
-        img.parentNode.replaceChild(span, img);
-    }
-
     const quizData = [
         {
-            q: "When you first start planning a lesson using AI, what do you usually do?",
+            q: "When you start planning a lesson using AI, what do you usually do?",
             options: [
                 { text: "I start by crafting a good prompt to help AI generate ideas for my lesson.", persona: "Prompt Whisperer" },
-                { text: "I ask AI to generate initial drafts of worksheets, examples, or teaching materials for the topic.", persona: "Content Alchemist" },
-                { text: "I think about how students themselves could interact responsibly with AI to support their learning during the lesson.", persona: "Classroom Conductor" },
-                { text: "I use AI to aggregate past student mistakes and consider how I could address those misconceptions.", persona: "Feedback Detective" },
-                { text: "I use AI to support me in reflecting on how my previous lesson went, then try to improve it.", persona: "Lesson Hacker" }
+                { text: "I ask AI to generate worksheets, examples, or teaching materials for the topic.", persona: "Content Alchemist" },
+                { text: "I think about how students themselves could interact with AI during the lesson.", persona: "Classroom Conductor" },
+                { text: "I look at past student mistakes and ask AI how I could address those misconceptions.", persona: "Feedback Detective" },
+                { text: "I reflect on how my previous lesson went and ask AI how it could be improved.", persona: "Lesson Hacker" }
             ]
         },
         {
             q: "You discover a new AI tool designed for education. What is the first thing you want to try?",
             options: [
-                { text: "Experiment with different prompts to see what kind of responses the AI gives and to determine if it has appropriate guardrails in place.", persona: "Prompt Whisperer" },
-                { text: "Use it to generate initial drafts of resources like quizzes or case studies, then consider if they are helpful for my teaching and learning practices.", persona: "Content Alchemist" },
-                { text: "Design an activity to see how it can be used to help my students explore ideas.", persona: "Classroom Conductor" },
-                { text: "If it cannot be used to provide learning data, I am not using it!", persona: "Feedback Detective" },
-                { text: "Can it be used for lesson review?", persona: "Lesson Hacker" }
+                { text: "Experiment with different prompts to see what kind of responses the AI gives.", persona: "Prompt Whisperer" },
+                { text: "Use it to quickly generate resources like quizzes or case studies.", persona: "Content Alchemist" },
+                { text: "Design an activity where students can use the AI to explore ideas.", persona: "Classroom Conductor" },
+                { text: "See whether it can help analyse student responses or give feedback.", persona: "Feedback Detective" },
+                { text: "Ask it to help improve or redesign one of my existing lessons.", persona: "Lesson Hacker" }
             ]
         },
         {
-            q: "During a department meeting, the team discusses the design for a level Project Work. What is your suggestion?",
+            q: "During a lesson, students seem stuck on a difficult concept. How might AI help?",
             options: [
-                { text: "Use the Lesson Collaborator Chatbot and the Authoring Copilot to generate different drafts for discussion.", persona: "Prompt Whisperer" },
-                { text: "Use Google NotebookLM to generate multimodal resources and consider how these resources can supplement my students’ learning experiences.", persona: "Content Alchemist" },
-                { text: "Consider how SLS AI tools can facilitate student collaboration rather than simply getting students to do seatwork.", persona: "Classroom Conductor" },
-                { text: "Consider how AI tools can facilitate the collection of learning data throughout students’ learning processes.", persona: "Feedback Detective" },
-                { text: "Consider how department teachers can use AI to collaborate in developing resources.", persona: "Lesson Hacker" }
+                { text: "I try different prompts to see if AI can come up with a clearer explanation.", persona: "Prompt Whisperer" },
+                { text: "I ask AI to produce a quick practice question or example explainer media for students.", persona: "Content Alchemist" },
+                { text: "I let students ask the AI questions to help them explore the concept further.", persona: "Classroom Conductor" },
+                { text: "I ask AI to help identify the misconception students might have.", persona: "Feedback Detective" },
+                { text: "I later use AI to redesign my lesson to teach this concept again.", persona: "Lesson Hacker" }
             ]
         },
         {
-            q: "After students submit their work, how do you use AI to support post-lesson learning?",
+            q: "After students submit their work, how are you most likely to use AI?",
             options: [
-                { text: "I refine AI-generated feedback (by constantly refining my prompts) and check that my students can understand and act on the feedback.", persona: "Prompt Whisperer" },
-                { text: "I use ACP or other AI lesson planning tools to help generate additional lesson materials to address my students’ needs.", persona: "Content Alchemist" },
-                { text: "I use AI to help me explore different lesson modalities that can address my students’ learning needs.", persona: "Classroom Conductor" },
-                { text: "I use AI to analyse patterns in student responses and identify misconceptions.", persona: "Feedback Detective" },
-                { text: "I use AI to reflect on my lesson enactment and consider how my lesson can be improved for my other classes at the same level.", persona: "Lesson Hacker" }
+                { text: "I prompt AI to ask what I can do with my students’ work to give them better feedback.", persona: "Prompt Whisperer" },
+                { text: "I use AI to help generate additional practice questions for students.", persona: "Content Alchemist" },
+                { text: "I design a follow-up activity where students can discuss their answers with AI.", persona: "Classroom Conductor" },
+                { text: "I use AI to help analyse patterns in student responses.", persona: "Feedback Detective" },
+                { text: "I use AI to reflect on the lesson and think about improvements.", persona: "Lesson Hacker" }
             ]
         },
         {
             q: "When colleagues talk about using AI in teaching, which idea excites you most?",
             options: [
-                { text: "Learning how to write better prompts that can improve my lessons.", persona: "Prompt Whisperer" },
+                { text: "Learning how to write better prompts to get more useful responses.", persona: "Prompt Whisperer" },
                 { text: "Using AI to create high-quality teaching materials quickly.", persona: "Content Alchemist" },
-                { text: "Finding ways in which AI can facilitate learning experiences that can transform students’ learning.", persona: "Classroom Conductor" },
-                { text: "Using AI to better understand student learning and provide feedback.", persona: "Feedback Detective" },
+                { text: "Finding ways for students to use AI to support their own learning.", persona: "Classroom Conductor" },
+                { text: "Using AI to better understand student learning and give feedback.", persona: "Feedback Detective" },
                 { text: "Using AI to help refine and improve lesson design over time.", persona: "Lesson Hacker" }
             ]
         },
         {
-            q: "To you, what is most helpful about using AI in teaching and learning?",
+            q: "If you had 10 minutes to experiment with AI before your next lesson, what would you most likely do?",
             options: [
-                { text: "GenAI supports my idea generation. I can try different prompts to see which ones produce the best teaching ideas.", persona: "Prompt Whisperer" },
-                { text: "It is able to help me generate initial drafts of lesson resources. What more can I ask for?", persona: "Content Alchemist" },
-                { text: "I am now more open to different lesson modalities and possibilities of what students might be able to do in class.", persona: "Classroom Conductor" },
-                { text: "Data, data, data.", persona: "Feedback Detective" },
-                { text: "I can reflect candidly on my lesson and seek feedback from my colleagues to improve my teaching and learning practices.", persona: "Lesson Hacker" }
+                { text: "Try different prompts to see which ones produce the best teaching ideas.", persona: "Prompt Whisperer" },
+                { text: "Generate a worksheet, example set, or activity for the lesson.", persona: "Content Alchemist" },
+                { text: "Create a short activity where students can explore a topic with AI.", persona: "Classroom Conductor" },
+                { text: "Analyse sample student answers with AI to identify misconceptions.", persona: "Feedback Detective" },
+                { text: "Ask AI to review my lesson plan and suggest improvements.", persona: "Lesson Hacker" }
             ]
         }
     ];
@@ -451,13 +443,20 @@
         imgElement.style.display = 'none';
         loader.style.display = 'block';
 
+        // GitHub Fix: Ensure relative path
         imgElement.src = details.image;
+        
         imgElement.onload = () => {
             loader.style.display = 'none';
             imgElement.style.display = 'block';
         };
+        
         imgElement.onerror = () => {
-            loader.innerHTML = `<span style="font-size: 1.8rem; font-weight:900; color:var(--primary); text-transform:uppercase;">${winner}</span><br><small style="color:var(--text-light)">(Image not found)</small>`;
+            // High quality fallback if file is missing in GitHub repo
+            loader.style.display = 'none';
+            const fallbackUrl = `https://via.placeholder.com/400x350/6366f1/ffffff?text=${winner.replace(' ', '+')}`;
+            imgElement.src = fallbackUrl;
+            imgElement.style.display = 'block';
         };
 
         document.getElementById('persona-display').innerText = winner;
